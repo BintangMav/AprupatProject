@@ -1,13 +1,13 @@
-<div class="modal-body">
-  <form action="{{ route('ruangan.update', $pesanan->id) }}" method="POST">
-      @csrf
-  <div class="row mb-3">
+<form action="{{ route('ruangan.update', $pesanan->id) }}" method="POST">
+    @csrf
+    <div class="modal-body">
+        <div class="row mb-3">
             <div class="col-lg-4">
                 <label for="flatpickr-datetime" class="form-label">Judul <span style="color: red;">*</span></label>
             </div>
             <div class="col-lg-8">
                 <input type="text" class="form-control @error('judul') is-invalid @enderror" name="judul"
-                    placeholder="Silahkan isi judul rapatnya..." value="{{$pesanan->judul}}" />
+                    placeholder="Silahkan isi judul rapatnya..." value="{{ $pesanan->judul }}" />
                 @error('judul')
                     <div class="invalid-feedback" role="alert">
                         {{ $message }}
@@ -21,7 +21,7 @@
             </div>
             <div class="col-lg-8">
                 <input type="text" class="form-control @error('agenda') is-invalid @enderror" name="agenda"
-                    placeholder="Apa agenda rapatnya..." value="{{$pesanan->agenda}}" />
+                    placeholder="Apa agenda rapatnya..." value="{{ $pesanan->agenda }}" />
                 @error('agenda')
                     <div class="invalid-feedback" role="alert">
                         {{ $message }}
@@ -36,7 +36,8 @@
             </div>
             <div class="col-lg-8">
                 <input type="text" class="form-control @error('tanggal_waktu') is-invalid @enderror"
-                    name="tanggal_waktu" placeholder="Piih tanggal" id="flatpickr-datetime" value="{{$pesanan->tanggal_pinjam}} {{$pesanan->waktu_pinjam}}"/>
+                    name="tanggal_waktu" placeholder="Piih tanggal" id="flatpickr-datetime"
+                    value="{{ $pesanan->tanggal_pinjam }} {{ $pesanan->waktu_pinjam }}" />
                 @error('tanggal_waktu')
                     <div class="invalid-feedback" role="alert">
                         {{ $message }}
@@ -51,7 +52,7 @@
             </div>
             <div class="col-lg-8">
                 <input type="number" class="form-control @error('durasi') is-invalid @enderror" name="durasi"
-                    id="durasiInput" placeholder="Berapa menit anda melaksanakan rapat..." min="1" value="{{$pesanan->durasi}}"/>
+                    id="durasiInput" placeholder="Berapa menit anda melaksanakan rapat..." min="1" />
                 @error('durasi')
                     <div class="invalid-feedback" role="alert">
                         {{ $message }}
@@ -70,3 +71,42 @@
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
 </form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    const flatpickrDateTime = document.querySelector('#flatpickr-datetime')
+    console.log('cuk');
+
+    var currentTime = new Date();
+    var currentHour = currentTime.getHours();
+    var currentMinute = currentTime.getMinutes();
+    var currentFormattedTime = ('0' + currentHour).slice(-2) + ':' + ('0' + currentMinute).slice(-2);
+
+    flatpickrDateTime.flatpickr({
+        enableTime: true,
+        dateFormat: 'Y-m-d H:i',
+        minDate: 'today',
+        minTime: currentFormattedTime
+    });
+
+    $(document).ready(function() {
+        $('#btn-30').on('click', () => {
+            $('#durasiInput').val(30);
+        })
+
+        $('#btn-60').on('click', () => {
+            $('#durasiInput').val(60);
+        })
+
+        $('#btn-90').on('click', () => {
+            $('#durasiInput').val(90);
+        })
+
+        $('#btn-120').on('click', () => {
+            $('#durasiInput').val(120);
+        })
+
+        $('#btn-150').on('click', () => {
+            $('#durasiInput').val(150);
+        })
+    });
+</script>

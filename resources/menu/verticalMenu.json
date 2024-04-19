@@ -6,7 +6,7 @@
       "slug": "dashboardAdmin.index"
     },
     {
-      "name": "Data",
+      "name": "Kelola Data",
       "icon": "menu-icon tf-icons ti ti-database",
       "slug": "Data",
       "submenu": [

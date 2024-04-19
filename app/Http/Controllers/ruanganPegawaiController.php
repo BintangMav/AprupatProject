@@ -21,15 +21,15 @@ class ruanganPegawaiController extends Controller
 
     public function detail($id)
     {
-      $ruangan = Ruangan::find($id);
-      return view('content.pages.pegawai.ruangan.detail', compact('ruangan'));
+        $ruangan = Ruangan::find($id);
+        return view('content.pages.pegawai.ruangan.detail', compact('ruangan'));
     }
     public function detailPesanan($id)
     {
-      $user = Auth::user();
-      $pesanan = Pesanan::find($id);
-      $ruangan = Ruangan::find($id);
-      return view('content.pages.pegawai.ruangan.detailPesanan', compact('pesanan','ruangan'));
+        $user = Auth::user();
+        $pesanan = Pesanan::find($id);
+        $ruangan = Ruangan::find($id);
+        return view('content.pages.pegawai.ruangan.detailPesanan', compact('pesanan', 'ruangan'));
     }
 
     /**
@@ -44,8 +44,8 @@ class ruanganPegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'tanggal_waktu' => ['required'],
+      $request->validate([
+        'tanggal_waktu' => ['required'],
             'durasi' => ['required'],
             'agenda' => ['required'],
             'judul' => ['required'],
@@ -76,31 +76,63 @@ class ruanganPegawaiController extends Controller
         $ruangan->save();
 
         return redirect()->back()->with('message', 'Ruangan Berhasil dipesan !');
-    }
+      }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
+      /**
+       * Display the specified resource.
+       */
+      public function show(string $id)
+      {
         //
-    }
+      }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-      $pesanan = Pesanan::find($id);
-      return view('content.pages.pegawai.ruangan.edit', compact('pesanan'));
-    }
+      /**
+       * Show the form for editing the specified resource.
+       */
+      public function edit(string $id)
+      {
+        $pesanan = Pesanan::find($id);
+        return view('content.pages.pegawai.ruangan.edit', compact('pesanan'));
+      }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+      /**
+       * Update the specified resource in storage.
+       */
+      public function update(Request $request, string $id)
+      {
+        // dd($request);
+        $request->validate([
+          'tanggal_waktu' => ['required'],
+            'durasi' => ['required'],
+            'agenda' => ['required'],
+            'judul' => ['required'],
+            'ruangan' => ['required'],
+        ]);
+
+        $tanggal_waktu = $request->tanggal_waktu;
+        $durasi = $request->durasi;
+        $agenda = $request->agenda;
+        $judul = $request->judul;
+
+        [$tanggal, $waktu] = explode(' ', $tanggal_waktu);
+        $waktu_pinjam = date('H:i', strtotime($waktu));
+        $waktu_selesai = date('H:i', strtotime($waktu . ' +' . $durasi . ' minutes'));
+
+        $pegawai = Auth::user()->id;
+        $id_ruangan = $request->ruangan;
+
+        $ruangan = Pesanan::find($id);
+        $ruangan->id_pegawai = $pegawai;
+        $ruangan->id_ruangan = $id_ruangan;
+        $ruangan->tanggal_pinjam = $tanggal;
+        $ruangan->tanggal_selesai = $tanggal;
+        $ruangan->waktu_pinjam = $waktu_pinjam;
+        $ruangan->waktu_selesai = $waktu_selesai;
+        $ruangan->agenda = $agenda;
+        $ruangan->judul = $judul;
+        $ruangan->save();
+
+        return redirect()->back()->with('message', 'Ruangan Berhasil dipesan !');
     }
 
     /**

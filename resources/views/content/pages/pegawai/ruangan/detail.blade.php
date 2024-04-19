@@ -56,12 +56,12 @@
 
 <!-- Vendor Scripts -->
 @section('vendor-script')
-    @vite(['resources/assets/vendor/libs/flatpickr/flatpickr.js'])
+    @vite(['resources/assets/vendor/libs/flatpickr/flatpickr.js','resources/assets/js/forms-pickers.js'])
 @endsection
 
 <!-- Page Scripts -->
 @section('page-script')
-    @vite(['resources/assets/js/forms-pickers.js', 'resources/assets/js/ui-popover.js'])
+    @vite(['resources/assets/js/ui-popover.js'])
 @endsection
 
 @section('content')
