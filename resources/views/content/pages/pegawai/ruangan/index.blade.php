@@ -59,15 +59,15 @@
               </p>
               @if ($item->status === 1)
                 <div class="button w-100">
-                    <button class="btn btn-primary w-100 btn-toggle-sidebar" data-bs-toggle="offcanvas" data-bs-target="#addEventSidebar" aria-controls="addEventSidebar">
-                        <a class="text-white" href="{{route('ruangan.detail',$item->id)}}"><span class="align-middle w-100">Pesan Ruangan</span></a>
-                    </button>
+                    {{-- <button class="btn btn-primary w-100 btn-toggle-sidebar" data-bs-toggle="offcanvas" data-bs-target="#addEventSidebar" aria-controls="addEventSidebar"> --}}
+                        <a class="text-white btn btn-primary w-100" href="{{route('ruangan.detail',$item->id)}}"><span class="align-middle w-100">Pesan Ruangan</span></a>
+                    {{-- </button> --}}
                 </div>
               @else
                 <div class="button w-100" style="cursor: not-allowed">
-                  <button class="btn btn-primary w-100 btn-toggle-sidebar" data-bs-toggle="offcanvas" data-bs-target="#addEventSidebar" aria-controls="addEventSidebar" disabled>
-                      <a class="text-white" href="{{route('ruangan.detail',$item->id)}}"><span class="align-middle w-100">Pesan Ruangan</span></a>
-                  </button>
+                  {{-- <button class="btn btn-primary w-100 btn-toggle-sidebar" data-bs-toggle="offcanvas" data-bs-target="#addEventSidebar" aria-controls="addEventSidebar" disabled> --}}
+                      <a class="text-white btn btn-primary w-100" href="{{route('ruangan.detail',$item->id)}}"><span class="align-middle w-100">Pesan Ruangan</span></a>
+                  {{-- </button> --}}
                 </div>
               @endif
             </div>
