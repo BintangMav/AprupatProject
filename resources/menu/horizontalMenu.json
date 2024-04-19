@@ -1,0 +1,14 @@
+{
+  "menu": [
+    {
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icon fa-solid fa-gauge",
+      "slug": "dashboard.index"
+    },
+    {
+      "name": "Pesan Ruang Rapat",
+      "icon": "menu-icon fa-solid fa-handshake",
+      "slug": "ruangan.index"
+    }
+  ]
+}

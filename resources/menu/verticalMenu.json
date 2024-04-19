@@ -1,0 +1,44 @@
+{
+  "menu": [
+    {
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons ti ti-gauge",
+      "slug": "dashboardAdmin.index"
+    },
+    {
+      "name": "Data",
+      "icon": "menu-icon tf-icons ti ti-database",
+      "slug": "Data",
+      "submenu": [
+        {
+          "name": "Data Jabatan",
+          "slug": "jabatan.index"
+        },
+        {
+          "name": "Data Karyawan",
+          "slug": "karyawan.index"
+        },
+        {
+          "name": "Data Ruangan",
+          "slug": "ruanganAdmin.index"
+        }
+      ]
+    },
+    {
+      "name": "Akses Admin",
+      "icon": "menu-icon tf-icons ti ti-accessible",
+      "slug": "admin.index"
+    },
+    {
+      "name": "Laporan Pemesanan",
+      "icon": "menu-icon tf-icons ti ti-clipboard-text",
+      "slug": "pages-misc-error",
+      "target": "_blank"
+    },
+    {
+      "name": "Logout",
+      "icon": "menu-icon tf-icons ti ti-login",
+      "slug": "loginAdmin.logout"
+    }
+  ]
+}
