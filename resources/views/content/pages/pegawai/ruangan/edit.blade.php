@@ -70,8 +70,9 @@
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
 </form>
-@push('pricing-script')
 <script>
+  const flatpickrDateTime = document.querySelector('#flatpickr-datetime')
+  console.log('cuk');
   $(document).ready(function() {
       $('#btn-30').on('click', () => {
           $('#durasiInput').val(30);
@@ -93,5 +94,16 @@
           $('#durasiInput').val(150);
       })
   });
+
+  var currentTime = new Date();
+    var currentHour = currentTime.getHours();
+    var currentMinute = currentTime.getMinutes();
+    var currentFormattedTime = ('0' + currentHour).slice(-2) + ':' + ('0' + currentMinute).slice(-2);
+
+    flatpickrDateTime.flatpickr({
+      enableTime: true,
+      dateFormat: 'Y-m-d H:i',
+      minDate: 'today',
+      minTime: currentFormattedTime
+    });
 </script>
-@endpush
