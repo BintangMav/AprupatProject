@@ -43,7 +43,7 @@
       enableTime: true,
       dateFormat: 'Y-m-d H:i',
       minDate: 'today',
-      minTime: currentFormattedTime 
+      minTime: currentFormattedTime
     });
   }
 

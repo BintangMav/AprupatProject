@@ -12,6 +12,23 @@
         }
     </style>
 @endsection
+@section('vendor-style')
+    @vite(['resources/assets/vendor/libs/fullcalendar/fullcalendar.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/@form-validation/form-validation.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/jquery-timepicker/jquery-timepicker.scss', 'resources/assets/vendor/libs/pickr/pickr-themes.scss'])
+@endsection
+
+@section('page-style')
+    @vite(['resources/assets/vendor/scss/pages/app-calendar.scss'])
+@endsection
+
+<!-- Vendor Scripts -->
+@section('vendor-script')
+    @vite(['resources/assets/vendor/libs/flatpickr/flatpickr.js', 'resources/assets/js/forms-pickers.js'])
+@endsection
+
+<!-- Page Scripts -->
+@section('page-script')
+    @vite(['resources/assets/js/ui-popover.js'])
+@endsection
 @section('title', 'Room Page')
 @section('content')
     <h4>Dashboard / Room</h4>
